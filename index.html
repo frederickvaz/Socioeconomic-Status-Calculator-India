@@ -5,30 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SES Calculator — BG Prasad & Kuppuswamy</title>
   <style>
+    :root {
+      --primary: #0066cc;
+      --primary-hover: #005bb5;
+      --ghost-bg: #e9f2ff;
+      --ghost-border: #cfe3ff;
+      --text-muted: #555;
+    }
     body { font-family: Arial, sans-serif; background-color:#f4f4f4; color:#333; padding:20px; margin:0; }
-    h1 { color:#0066cc; }
+    h1 { color:var(--primary); margin: 0.2rem 0 1rem; text-align:center; font-size: 2.6rem; }
     form { background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); }
     label { font-size:16px; }
     input, select, button {
       display:block; width:calc(100% - 22px); margin:10px 0; padding:10px;
       font-size:16px; border:1px solid #ccc; border-radius:4px;
     }
-    button { background-color:#0066cc; color:#fff; border:none; cursor:pointer; }
-    button:hover { background-color:#005bb5; }
+    button { background-color:var(--primary); color:#fff; border:none; cursor:pointer; }
+    button:hover { background-color:var(--primary-hover); }
     #result, #classResult { margin-top:20px; background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,.1); }
     .developer-label { font-size:18px; font-weight:bold; margin-top:20px; }
-    .helper-note { color:#555; font-size:14px; }
+    .helper-note { color:var(--text-muted); font-size:14px; }
     .box { background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,.1); margin-top:20px; }
+
     /* landing buttons */
     .btn { display:inline-block; padding:10px 14px; border-radius:8px; text-decoration:none; }
-    .btn.primary { background:#0066cc; color:#fff; }
-    .btn.ghost { background:#e9f2ff; color:#023; border:1px solid #cfe3ff; }
+    .btn.primary { background:var(--primary); color:#fff; }
+    .btn.primary:hover { background:var(--primary-hover); }
+    .btn.ghost {
+      background:var(--ghost-bg); color:#023; border:1px solid var(--ghost-border);
+    }
+    .btn.lg { padding:14px 20px; font-size:18px; }
+
     .row { display:flex; gap:12px; flex-wrap:wrap; }
+    .row.center { justify-content:center; }
     .hidden { display:none !important; }
     .card { background:#fff; padding:16px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,.06); margin:16px 0; }
+
     /* profile card */
     .center { text-align: center; }
-    .muted { color:#555; }
+    .muted { color:var(--text-muted); }
     .profile-card { padding: 20px; }
     .profile-photo {
       width: 180px; height: 180px; object-fit: cover;
@@ -41,7 +56,7 @@
     }
     .link-chip {
       display: inline-block; padding: 8px 12px; border-radius: 999px;
-      background: #e9f2ff; border: 1px solid #cfe3ff; color: #023; text-decoration: none;
+      background: var(--ghost-bg); border: 1px solid var(--ghost-border); color: #023; text-decoration: none;
     }
     .link-chip:hover { background: #dbe9ff; }
     .back-top { text-align:center; margin-top:12px; }
@@ -51,26 +66,24 @@
 
   <!-- PAGE 1: Landing -->
   <section id="page-home">
-    <h1>Socioeconomic Status Calculator (India)</h1>
-    <p>Select a scale to continue:</p>
-    <div class="row">
-      <a href="#/bgp" class="btn primary">BG Prasad Scale</a>
-      <a href="#/ks" class="btn primary">Kuppuswamy Scale</a>
-      <button id="open-resources" type="button" class="btn ghost">Resources (PDFs)</button>
+    <h1>Socioeconomic Status Scales—India</h1>
+
+    <div class="row center" style="margin:14px 0 10px;">
+      <a href="#/bgp" class="btn primary lg">BG Prasad Scale</a>
+      <a href="#/ks" class="btn primary lg">Kuppuswamy Scale</a>
+      <button id="open-resources" type="button" class="btn ghost lg">Resources (PDF)</button>
     </div>
 
     <div id="resources" class="card hidden">
       <h2 style="margin-top:0">Resources</h2>
-      <p>Upload your PDFs to a <code>resources/</code> folder and link them here.</p>
       <ul>
-        <li><a href="resources/paper1.pdf" target="_blank">Key Paper 1 (PDF)</a></li>
-        <li><a href="resources/paper2.pdf" target="_blank">Key Paper 2 (PDF)</a></li>
+        <li><a href="resources/key-paper.pdf" target="_blank">Key Paper (PDF)</a></li>
       </ul>
     </div>
 
     <!-- Info card with photo & links -->
     <div class="card profile-card">
-      <h2 class="center">Socioeconomic Status Scale Calculator — India</h2>
+      <h2 class="center" style="margin-top:0.2rem;">Socioeconomic Status Scale Calculator — India</h2>
       <p class="center muted">Developed by <strong>Dr. Frederick Vaz</strong>, Goa Medical College, Goa</p>
 
       <div class="center">
@@ -89,9 +102,9 @@
         <a class="link-chip" href="https://www.researchgate.net/profile/Frederick-Vaz" target="_blank" rel="noopener">🔗 ResearchGate</a>
       </div>
 
-      <!-- Back to top link -->
+      <!-- Inline Back to Top button (styled) -->
       <div class="back-top">
-        <a href="#/home">⬆ Back to Top</a>
+        <a href="#/home" class="btn ghost lg">⬆ Back to Top</a>
       </div>
     </div>
   </section>
@@ -162,9 +175,9 @@
     <div id="classResult"></div>
 
     <br>
-    <div class="row">
-      <a href="#/home" class="btn ghost">← Back to Home</a>
-      <a href="#/ks" class="btn ghost">Go to Kuppuswamy</a>
+    <div class="row center">
+      <a href="#/home" class="btn ghost lg">← Back to Home</a>
+      <a href="#/ks" class="btn ghost lg">Go to Kuppuswamy</a>
     </div>
 
     <br>
@@ -175,9 +188,9 @@
   <section id="page-ks" class="hidden">
     <h1>Kuppuswamy Socioeconomic Status Scale</h1>
     <p>We’ll add CPI → current income bands → Education & Occupation → Total Score here next.</p>
-    <div class="row">
-      <a href="#/home" class="btn ghost">← Back to Home</a>
-      <a href="#/bgp" class="btn ghost">Go to BG Prasad</a>
+    <div class="row center">
+      <a href="#/home" class="btn ghost lg">← Back to Home</a>
+      <a href="#/bgp" class="btn ghost lg">Go to BG Prasad</a>
     </div>
   </section>
 
@@ -205,6 +218,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
