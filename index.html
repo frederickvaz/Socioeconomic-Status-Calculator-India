@@ -90,14 +90,14 @@
     
     <div class="box">
       <h2 style="margin-top:0">Compute Per-Capita Income</h2>
-      <label for="totalIncomeBG">Total Monthly Family Income (₹):</label>
+      <label for="totalIncomeBG">Enter Total Monthly Family Income (₹):</label>
       <input type="number" id="totalIncomeBG" placeholder="e.g., 30000">
 
-      <label for="familySizeBG">Total Family Members:</label>
+      <label for="familySizeBG">Enter Total Family Members:</label>
       <input type="number" id="familySizeBG" min="1" placeholder="e.g., 4">
 
       <p id="pciBGNote" class="helper-note">Per-Capita Income (auto-calculated): —</p>
-      <p class="helper-note">This auto-calculated PCI is filled below.</p>
+      <p class="helper-note">This auto-calculated Per-Capita Income is filled below.</p>
     </div>
    
 
@@ -106,7 +106,7 @@
     <label for="income">Monthly Per Capita Income of the Family (auto-calculated):</label>
     <input type="number" id="income" readonly>
 
-    <button type="button" onclick="determineClass()">Determine BG Prasad Socio-economic Class for the Family</button>
+    <button type="button" onclick="determineClass()">Click to Determine BG Prasad Socio-economic Class for the Family</button>
     <div id="classResult"></div>
 
     <br>
@@ -115,6 +115,7 @@
     <script src="app.js"></script>
 </body>
 </html>
+
 
 
 
