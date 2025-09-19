@@ -98,20 +98,28 @@ function determineClass() {
 
         if (total === null || !size || size <= 0) {
             note.textContent = 'Per-Capita Income (auto): —';
+            if (pciBox) pciBox.value = "";
             return;
         }
+
         const pci = Math.floor(total / size);
         note.textContent = 'Per-Capita Income (auto): ₹ ' + pci.toLocaleString('en-IN');
 
-        // Auto-fill your existing per-capita input (so the rest of your code works identically)
+        // Auto-fill your existing per-capita input
         if (pciBox) pciBox.value = String(pci);
     }
 
-    // Wire the new inputs if they exist
     document.addEventListener('DOMContentLoaded', () => {
+        // Make sure the PCI input is readonly
+        const pciBox = document.getElementById('income');
+        if (pciBox) pciBox.readOnly = true;
+
+        // Wire the new inputs
         document.getElementById('totalIncomeBG')?.addEventListener('input', updateBGPCI);
         document.getElementById('familySizeBG')?.addEventListener('input', updateBGPCI);
     });
 })();
+
+
 
 
