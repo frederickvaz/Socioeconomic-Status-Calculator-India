@@ -13,7 +13,7 @@
       --text-muted: #555;
     }
     body { font-family: Arial, sans-serif; background-color:#f4f4f4; color:#333; padding:20px; margin:0; }
-    h1 { color:var(--primary); margin: 0.2rem 0 1rem; text-align:center; font-size: 2.6rem; }
+    h1 { color:var(--primary); margin: 0.5rem 0 1rem; text-align:center; font-size: 2.4rem; }
     form { background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); }
     label { font-size:16px; }
     input, select, button {
@@ -28,15 +28,15 @@
     .box { background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,.1); margin-top:20px; }
 
     /* landing buttons */
-    .btn { display:inline-block; padding:10px 14px; border-radius:8px; text-decoration:none; }
-    .btn.primary { background:var(--primary); color:#fff; }
+    .btn { display:inline-block; padding:10px 14px; border-radius:8px; text-decoration:none; text-align:center; }
+    .btn.primary { background:var(--primary); color:#fff; font-weight:bold; }
     .btn.primary:hover { background:var(--primary-hover); }
     .btn.ghost {
       background:var(--ghost-bg); color:#023; border:1px solid var(--ghost-border);
     }
-    .btn.lg { padding:14px 20px; font-size:18px; }
+    .btn.lg { padding:18px 28px; font-size:22px; font-weight:bold; }
 
-    .row { display:flex; gap:12px; flex-wrap:wrap; }
+    .row { display:flex; gap:16px; flex-wrap:wrap; }
     .row.center { justify-content:center; }
     .hidden { display:none !important; }
     .card { background:#fff; padding:16px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,.06); margin:16px 0; }
@@ -59,7 +59,7 @@
       background: var(--ghost-bg); border: 1px solid var(--ghost-border); color: #023; text-decoration: none;
     }
     .link-chip:hover { background: #dbe9ff; }
-    .back-top { text-align:center; margin-top:12px; }
+    .back-top { text-align:center; margin-top:14px; }
   </style>
 </head>
 <body>
@@ -68,7 +68,7 @@
   <section id="page-home">
     <h1>Socioeconomic Status Scales—India</h1>
 
-    <div class="row center" style="margin:14px 0 10px;">
+    <div class="row center" style="margin:20px 0;">
       <a href="#/bgp" class="btn primary lg">BG Prasad Scale</a>
       <a href="#/ks" class="btn primary lg">Kuppuswamy Scale</a>
       <button id="open-resources" type="button" class="btn ghost lg">Resources (PDF)</button>
@@ -87,7 +87,6 @@
       <p class="center muted">Developed by <strong>Dr. Frederick Vaz</strong>, Goa Medical College, Goa</p>
 
       <div class="center">
-        <!-- Replace with your actual photo filename -->
         <img src="images/dr-frederick-vaz.jpg" alt="Dr. Frederick Vaz" class="profile-photo">
       </div>
 
@@ -218,6 +217,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
