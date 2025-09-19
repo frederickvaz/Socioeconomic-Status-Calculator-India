@@ -1,97 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BG Prasad Socio-economic Status Scale Calculator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            padding: 20px;
-            margin: 0;
-        }
-        h1 { color: #0066cc; }
-        form {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        label { font-size: 16px; }
-        input, select, button {
-            display: block;
-            width: calc(100% - 22px);
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button { background-color: #0066cc; color: white; border: none; cursor: pointer; }
-        button:hover { background-color: #005bb5; }
-        #result, #classResult {
-            margin-top: 20px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .developer-label { font-size: 18px; font-weight: bold; margin-top: 20px; }
-        .helper-note { color:#555; font-size:14px; }
-        .box { background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,.1); margin-top:20px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SES Calculator — BG Prasad & Kuppuswamy</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color:#f4f4f4; color:#333; padding:20px; margin:0; }
+    h1 { color:#0066cc; }
+    form { background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); }
+    label { font-size:16px; }
+    input, select, button {
+      display:block; width:calc(100% - 22px); margin:10px 0; padding:10px;
+      font-size:16px; border:1px solid #ccc; border-radius:4px;
+    }
+    button { background-color:#0066cc; color:#fff; border:none; cursor:pointer; }
+    button:hover { background-color:#005bb5; }
+    #result, #classResult { margin-top:20px; background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,.1); }
+    .developer-label { font-size:18px; font-weight:bold; margin-top:20px; }
+    .helper-note { color:#555; font-size:14px; }
+    .box { background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,.1); margin-top:20px; }
+    /* landing buttons */
+    .btn { display:inline-block; padding:10px 14px; border-radius:8px; text-decoration:none; }
+    .btn.primary { background:#0066cc; color:#fff; }
+    .btn.ghost { background:#e9f2ff; color:#023; border:1px solid #cfe3ff; }
+    .row { display:flex; gap:12px; flex-wrap:wrap; }
+    .hidden { display:none !important; }
+    .card { background:#fff; padding:16px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,.06); margin:16px 0; }
+    /* profile card */
+    .center { text-align: center; }
+    .muted { color:#555; }
+    .profile-card { padding: 20px; }
+    .profile-photo {
+      width: 180px; height: 180px; object-fit: cover;
+      border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin: 10px auto 12px; display: block;
+    }
+    .links-row {
+      display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .link-chip {
+      display: inline-block; padding: 8px 12px; border-radius: 999px;
+      background: #e9f2ff; border: 1px solid #cfe3ff; color: #023; text-decoration: none;
+    }
+    .link-chip:hover { background: #dbe9ff; }
+    .back-top { text-align:center; margin-top:12px; }
+  </style>
 </head>
 <body>
+
+  <!-- PAGE 1: Landing -->
+  <section id="page-home">
+    <h1>Socioeconomic Status Calculator (India)</h1>
+    <p>Select a scale to continue:</p>
+    <div class="row">
+      <a href="#/bgp" class="btn primary">BG Prasad Scale</a>
+      <a href="#/ks" class="btn primary">Kuppuswamy Scale</a>
+      <button id="open-resources" type="button" class="btn ghost">Resources (PDFs)</button>
+    </div>
+
+    <div id="resources" class="card hidden">
+      <h2 style="margin-top:0">Resources</h2>
+      <p>Upload your PDFs to a <code>resources/</code> folder and link them here.</p>
+      <ul>
+        <li><a href="resources/paper1.pdf" target="_blank">Key Paper 1 (PDF)</a></li>
+        <li><a href="resources/paper2.pdf" target="_blank">Key Paper 2 (PDF)</a></li>
+      </ul>
+    </div>
+
+    <!-- Info card with photo & links -->
+    <div class="card profile-card">
+      <h2 class="center">Socioeconomic Status Scale Calculator — India</h2>
+      <p class="center muted">Developed by <strong>Dr. Frederick Vaz</strong>, Goa Medical College, Goa</p>
+
+      <div class="center">
+        <!-- Replace with your actual photo filename -->
+        <img src="images/dr-frederick-vaz.jpg" alt="Dr. Frederick Vaz" class="profile-photo">
+      </div>
+
+      <div class="center">
+        <h3 style="margin:8px 0 4px;">Dr. Frederick Vaz</h3>
+        <p style="margin:0;">📧 Email: <a href="mailto:frederickvaz@rediffmail.com">frederickvaz@rediffmail.com</a></p>
+      </div>
+
+      <div class="links-row">
+        <a class="link-chip" href="https://orcid.org/0000-0003-3113-5920" target="_blank" rel="noopener">🔗 ORCID</a>
+        <a class="link-chip" href="https://www.linkedin.com/in/frederick-vaz-8368101b4" target="_blank" rel="noopener">🔗 LinkedIn</a>
+        <a class="link-chip" href="https://www.researchgate.net/profile/Frederick-Vaz" target="_blank" rel="noopener">🔗 ResearchGate</a>
+      </div>
+
+      <!-- Back to top link -->
+      <div class="back-top">
+        <a href="#/home">⬆ Back to Top</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 2: BG Prasad -->
+  <section id="page-bgp" class="hidden">
     <h1>BG Prasad Socio-economic Status Scale Calculator</h1>
     <p class="developer-label">Developed by: Dr. Frederick Vaz, Department of Community Medicine, Goa Medical College, Goa</p>
 
     <form id="bgPrasadForm">
-        <label for="cpi">Enter Consumer Price Index (CPI-IW):</label>
-        <input type="number" id="cpi" required>
-        <p class="info-link">Get latest CPI-IW value from: 
-          <a href="https://labourbureau.gov.in/" target="_blank">https://labourbureau.gov.in/</a>
-        </p> 
-        <br>
+      <label for="cpi">Enter Consumer Price Index (CPI-IW):</label>
+      <input type="number" id="cpi" required>
+      <p class="info-link">Get latest CPI-IW value from:
+        <a href="https://labourbureau.gov.in/" target="_blank">https://labourbureau.gov.in/</a>
+      </p>
+      <br>
 
-        <label for="month">Select Month of CPI Value:</label>
-        <select id="month">
-            <option value="January">January</option>
-            <option value="February">February</option>
-            <option value="March">March</option>
-            <option value="April">April</option>
-            <option value="May">May</option>
-            <option value="June">June</option>
-            <option value="July">July</option>
-            <option value="August">August</option>
-            <option value="September">September</option>
-            <option value="October">October</option>
-            <option value="November">November</option>
-            <option value="December">December</option>
-        </select>
-        <br>
+      <label for="month">Select Month of CPI Value:</label>
+      <select id="month">
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+      </select>
+      <br>
 
-        <label for="year">Select Year:</label>
-        <select id="year">
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-            <option value="2025">2025</option>
-            <option value="2026">2026</option>
-        </select>
-        <br>
+      <label for="year">Select Year:</label>
+      <select id="year">
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+      </select>
+      <br>
 
-        <button type="button" onclick="calculateThresholds()">Update BG Prasad Socioeconomic Scale</button>
+      <button type="button" onclick="calculateThresholds()">Update BG Prasad Socioeconomic Scale</button>
     </form>
 
     <div id="result"></div>
 
-    
     <div class="box">
       <h2 style="margin-top:0">Compute Per-Capita Income</h2>
       <label for="totalIncomeBG">Enter Total Monthly Family Income (₹):</label>
-      <input type="number" id="totalIncomeBG" placeholder="e.g., 30000">
+      <input type="number" id="totalIncomeBG" placeholder="e.g., 30000" min="0" step="1">
 
       <label for="familySizeBG">Enter Total Family Members:</label>
       <input type="number" id="familySizeBG" min="1" placeholder="e.g., 4">
@@ -99,22 +152,61 @@
       <p id="pciBGNote" class="helper-note">Per-Capita Income (auto-calculated): —</p>
       <p class="helper-note">This auto-calculated Per-Capita Income is filled below.</p>
     </div>
-   
 
     <br>
 
     <label for="income">Monthly Per Capita Income of the Family (auto-calculated):</label>
-    <input type="number" id="income" readonly>
+    <input type="number" id="income" readonly min="0">
 
     <button type="button" onclick="determineClass()">Click to Determine BG Prasad Socio-economic Class for the Family</button>
     <div id="classResult"></div>
 
     <br>
-    <p>Give your Valuable Feedback to: Dr. Frederick Vaz, email: frederickvaz@rediffmail.com</p>
+    <div class="row">
+      <a href="#/home" class="btn ghost">← Back to Home</a>
+      <a href="#/ks" class="btn ghost">Go to Kuppuswamy</a>
+    </div>
 
-    <script src="app.js"></script>
+    <br>
+    <p>Give your Valuable Feedback to: Dr. Frederick Vaz, email: frederickvaz@rediffmail.com</p>
+  </section>
+
+  <!-- PAGE 3: Kuppuswamy placeholder -->
+  <section id="page-ks" class="hidden">
+    <h1>Kuppuswamy Socioeconomic Status Scale</h1>
+    <p>We’ll add CPI → current income bands → Education & Occupation → Total Score here next.</p>
+    <div class="row">
+      <a href="#/home" class="btn ghost">← Back to Home</a>
+      <a href="#/bgp" class="btn ghost">Go to BG Prasad</a>
+    </div>
+  </section>
+
+  <!-- scripts -->
+  <script src="app.js"></script>
+  <script>
+    // simple 3-page hash router
+    function show(path) {
+      document.getElementById('page-home')?.classList.toggle('hidden', path !== '/home');
+      document.getElementById('page-bgp') ?.classList.toggle('hidden', path !== '/bgp');
+      document.getElementById('page-ks')  ?.classList.toggle('hidden', path !== '/ks');
+    }
+    function route() {
+      const hash = (location.hash || '#/home').slice(1);
+      show(hash);
+    }
+    window.addEventListener('hashchange', route);
+    route();
+
+    // resources toggle
+    document.getElementById('open-resources')?.addEventListener('click', () => {
+      const box = document.getElementById('resources');
+      if (box) box.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
+
+
 
 
 
