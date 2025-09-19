@@ -81,7 +81,7 @@ function determineClass() {
     `;
 }
 
-/* ✅ NEW: Intermediate step logic — compute PCI and auto-fill #income */
+
 (function () {
     function toNum(v) {
         const x = parseFloat((v ?? '').toString().replace(/,/g, ''));
@@ -119,6 +119,7 @@ function determineClass() {
         document.getElementById('familySizeBG')?.addEventListener('input', updateBGPCI);
     });
 })();
+
 
 
 
