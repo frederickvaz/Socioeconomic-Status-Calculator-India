@@ -87,9 +87,9 @@
 
     <div id="result"></div>
 
-    <!-- ✅ NEW: Intermediate step (auto-compute PCI) -->
+    
     <div class="box">
-      <h2 style="margin-top:0">Compute Per-Capita Income (PCI)</h2>
+      <h2 style="margin-top:0">Compute Per-Capita Income</h2>
       <label for="totalIncomeBG">Total Monthly Family Income (₹):</label>
       <input type="number" id="totalIncomeBG" placeholder="e.g., 30000">
 
@@ -97,13 +97,12 @@
       <input type="number" id="familySizeBG" min="1" placeholder="e.g., 4">
 
       <p id="pciBGNote" class="helper-note">Per-Capita Income (auto): —</p>
-      <p class="helper-note">This auto-calculated PCI is filled below, and your calculator uses it as before.</p>
+      <p class="helper-note">This auto-calculated PCI is filled below.</p>
     </div>
-    <!-- /NEW -->
+   
 
     <br>
 
-    <!-- Your original PCI field, now READONLY -->
     <label for="income">Monthly Per Capita Income of the Family (auto-calculated):</label>
     <input type="number" id="income" readonly>
 
@@ -116,6 +115,7 @@
     <script src="app.js"></script>
 </body>
 </html>
+
 
 
 
