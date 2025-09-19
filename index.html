@@ -50,7 +50,9 @@
     <form id="bgPrasadForm">
         <label for="cpi">Enter Consumer Price Index (CPI-IW):</label>
         <input type="number" id="cpi" required>
-        <p class="info-link">Get CPI-IW value from: <a href="https://labourbureau.gov.in/" target="_blank">https://labourbureau.gov.in/</a></p> 
+        <p class="info-link">Get CPI-IW value from: 
+          <a href="https://labourbureau.gov.in/" target="_blank">https://labourbureau.gov.in/</a>
+        </p> 
         <br>
 
         <label for="month">Select Month:</label>
@@ -94,16 +96,16 @@
       <label for="familySizeBG">Total Family Members:</label>
       <input type="number" id="familySizeBG" min="1" placeholder="e.g., 4">
 
-      <p id="pciBGNote" class="helper-note">Per-Capita Income (Auto Calculated): —</p>
-      <p class="helper-note">This auto-calculated Per Capita Income is filled below.</p>
+      <p id="pciBGNote" class="helper-note">Per-Capita Income (auto): —</p>
+      <p class="helper-note">This auto-calculated PCI is filled below, and your calculator uses it as before.</p>
     </div>
     <!-- /NEW -->
 
     <br>
 
-    <!-- Your original PCI field (unchanged) -->
-    <label for="income">Monthly Per Capita Income of the Family:</label>
-    <input type="number" id="income">
+    <!-- Your original PCI field, now READONLY -->
+    <label for="income">Monthly Per Capita Income of the Family (auto-calculated):</label>
+    <input type="number" id="income" readonly>
 
     <button type="button" onclick="determineClass()">Determine BG Prasad Socio-economic Class for the Family</button>
     <div id="classResult"></div>
@@ -114,6 +116,8 @@
     <script src="app.js"></script>
 </body>
 </html>
+
+
 
 
 
