@@ -22,7 +22,8 @@
     }
     button { background-color:var(--primary); color:#fff; border:none; cursor:pointer; }
     button:hover { background-color:var(--primary-hover); }
-    #result, #classResult { margin-top:20px; background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,.1); }
+    #result, #classResult,
+    #ks-bands-card, #ks-output { margin-top:20px; background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,.1); }
     .developer-label { font-size:18px; font-weight:bold; margin-top:20px; }
     .helper-note { color:var(--text-muted); font-size:14px; }
     .box { background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,.1); margin-top:20px; }
@@ -31,15 +32,18 @@
     .btn { display:inline-block; padding:10px 14px; border-radius:8px; text-decoration:none; text-align:center; }
     .btn.primary { background:var(--primary); color:#fff; font-weight:bold; }
     .btn.primary:hover { background:var(--primary-hover); }
-    .btn.ghost {
-      background:var(--ghost-bg); color:#023; border:1px solid var(--ghost-border);
-    }
+    .btn.ghost { background:var(--ghost-bg); color:#023; border:1px solid var(--ghost-border); }
     .btn.lg { padding:18px 28px; font-size:22px; font-weight:bold; }
 
     .row { display:flex; gap:16px; flex-wrap:wrap; }
     .row.center { justify-content:center; }
     .hidden { display:none !important; }
     .card { background:#fff; padding:16px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,.06); margin:16px 0; }
+
+    /* tables */
+    table { width:100%; border-collapse: collapse; }
+    th, td { border:1px solid #e5e5e5; padding:8px; text-align:center; }
+    th { background:#f7f9ff; }
 
     /* profile card */
     .center { text-align: center; }
@@ -182,10 +186,91 @@
     <p>Give your Valuable Feedback to: Dr. Frederick Vaz, email: frederickvaz@rediffmail.com</p>
   </section>
 
-  <!-- PAGE 3: Kuppuswamy placeholder -->
+  <!-- PAGE 3: Kuppuswamy -->
   <section id="page-ks" class="hidden">
     <h1>Kuppuswamy Socioeconomic Status Scale</h1>
-    <p>We’ll add CPI → current income bands → Education & Occupation → Total Score here next.</p>
+    <p class="developer-label">Developed by: Dr. Frederick Vaz, Community Medicine, Goa Medical College, Goa</p>
+
+    <!-- Step 1: CPI + Month/Year → Update bands -->
+    <form id="ksForm">
+      <label for="ks-cpi">Enter Consumer Price Index (CPI-IW, base 2016=100):</label>
+      <input type="number" id="ks-cpi" required>
+      <p class="info-link">Get latest CPI-IW value from:
+        <a href="https://labourbureau.gov.in/" target="_blank">https://labourbureau.gov.in/</a>
+      </p>
+      <br>
+
+      <label for="ks-month">Select Month of CPI Value:</label>
+      <select id="ks-month">
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+      </select>
+      <br>
+
+      <label for="ks-year">Select Year:</label>
+      <select id="ks-year">
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+      </select>
+      <br>
+
+      <button type="button" id="ks-update-bands">Update Kuppuswamy Income Levels</button>
+    </form>
+
+    <!-- Bands table -->
+    <div id="ks-bands-card">
+      <h2 style="margin-top:0">Kuppuswamy Income Levels (Base 2016 → Current)</h2>
+      <div class="helper-note">Income bands are scaled using: <code>Current = Base × (CPI-IW / 100)</code></div>
+      <table>
+        <thead>
+          <tr>
+            <th>Base Min (₹)</th>
+            <th>Base Max (₹)</th>
+            <th>Current Min (₹)</th>
+            <th>Current Max (₹)</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody id="ks-bands-body">
+          <tr><td colspan="5" class="helper-note">Click “Update Kuppuswamy Income Levels” after entering CPI.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Step 2 & 3: Income + Education + Occupation -->
+    <div class="box">
+      <h2 style="margin-top:0">Compute Kuppuswamy Total Score</h2>
+
+      <label for="ks-income">Enter Total Monthly Family Income (₹):</label>
+      <input type="number" id="ks-income" min="0" step="1" placeholder="e.g., 30000">
+      <p id="ks-inc-score" class="helper-note"></p>
+
+      <label for="ks-education">Education of Head of Family:</label>
+      <select id="ks-education"></select>
+      <p id="ks-edu-score" class="helper-note"></p>
+
+      <label for="ks-occupation">Occupation of Head of Family:</label>
+      <select id="ks-occupation"></select>
+      <p id="ks-occ-score" class="helper-note"></p>
+
+      <button type="button" id="ks-calc-total">Calculate Total Kuppuswamy Score</button>
+    </div>
+
+    <div id="ks-output"></div>
+
+    <br>
     <div class="row center">
       <a href="#/home" class="btn ghost lg">← Back to Home</a>
       <a href="#/bgp" class="btn ghost lg">Go to BG Prasad</a>
@@ -216,6 +301,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
